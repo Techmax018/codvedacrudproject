@@ -1,0 +1,57 @@
+:root {
+  --primary: #4f46e5;
+  --text: #1e293b;
+  --muted: #64748b;
+  --bg: #f8fafc;
+  --border: #e2e8f0;
+  --danger: #ef4444;
+}
+
+body { background: var(--bg); color: var(--text); margin: 0; font-family: sans-serif; display: flex; justify-content: center; }
+
+.App {
+  width: 100%; max-width: 500px; background: white; margin: 60px 20px; 
+  padding: 30px; border-radius: 16px; box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+}
+
+.error-banner {
+  background: #fee2e2; color: #b91c1c; padding: 10px; border-radius: 8px;
+  margin-bottom: 15px; font-size: 0.85rem; border: 1px solid #fecaca;
+}
+
+/* FORM STYLES */
+.task-form { display: flex; flex-direction: column; gap: 12px; }
+.input-group { display: flex; flex-direction: column; gap: 12px; }
+
+input[type="text"], .date-input {
+  padding: 12px; border: 1.5px solid var(--border); border-radius: 10px;
+  background: white !important; color: var(--text) !important; outline: none;
+}
+
+/* Hide date placeholder until focused or valued */
+.date-input::-webkit-datetime-edit-fields-wrapper { display: none; }
+.date-input:focus::-webkit-datetime-edit-fields-wrapper,
+.date-input:not([value=""])::-webkit-datetime-edit-fields-wrapper { display: inline-block; }
+
+button[type="submit"] {
+  background: var(--primary); color: white; border: none; padding: 12px;
+  border-radius: 10px; font-weight: bold; cursor: pointer; transition: 0.2s;
+}
+
+button[type="submit"]:hover { opacity: 0.9; }
+
+/* LIST STYLES */
+.task-list { list-style: none; padding: 0; margin-top: 25px; }
+.task-item { display: flex; align-items: center; padding: 12px 0; border-bottom: 1px solid var(--border); }
+.task-content { flex: 1; margin: 0 15px; }
+.completed { text-decoration: line-through; color: var(--muted); }
+.reminder-display { color: var(--primary); background: #eef2ff; padding: 2px 8px; border-radius: 10px; font-size: 0.75rem; }
+.delete-btn { color: var(--danger); background: none; border: none; cursor: pointer; font-size: 0.8rem; }
+
+/* PROGRESS BAR */
+.status-bar { margin-top: 30px; }
+.status-text { display: flex; justify-content: space-between; font-size: 0.8rem; color: var(--muted); margin-bottom: 8px; }
+.progress-bg { background: #e2e8f0; height: 8px; border-radius: 4px; overflow: hidden; }
+.progress-fill { background: var(--primary); height: 100%; transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+
+@media (min-width: 600px) { .input-group { flex-direction: row; } input[type="text"] { flex: 2; } .date-input { flex: 1; } }
